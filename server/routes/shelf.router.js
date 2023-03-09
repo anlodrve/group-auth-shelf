@@ -53,7 +53,6 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 
   queryText = 
     `DELETE FROM "item" WHERE "id" = $1 AND user_id = $2`
-    
   queryParams = [req.params.id, req.user.id]; 
 
 	pool.query(queryText, queryParams)
