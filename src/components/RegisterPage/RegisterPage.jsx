@@ -1,28 +1,19 @@
-import React from 'react';
-
-import { useHistory } from 'react-router-dom';
-import RegisterForm from '../RegisterForm/RegisterForm';
+import React from "react";
+import "./RegisterPage.scss";
+import RegisterForm from "../RegisterForm/RegisterForm";
+import AmethystKitty from "../../images/amethyst.png";
 
 function RegisterPage() {
-  const history = useHistory();
-
-  return (
-    <div>
-      <RegisterForm />
-
-      <center>
-        <button
-          type="button"
-          className="btn btn_asLink"
-          onClick={() => {
-            history.push('/login');
-          }}
-        >
-          Login
-        </button>
-      </center>
-    </div>
-  );
+	return (
+		<div className="register-page">
+			<section className="register-page__form-box">
+				<RegisterForm />
+			</section>
+			<section className="register-page__image-box">
+				<img src={AmethystKitty} alt="" />
+			</section>
+		</div>
+	);
 }
 
 export default RegisterPage;
