@@ -1,17 +1,22 @@
-import React from "react";
-
-import ShelfForm from "./ShelfForm";
-import ShelfList from "./ShelfList";
+import React, { useEffect } from 'react';
+import ShelfList from './ShelfList';
+import { useDispatch } from 'react-redux';
 
 function ShelfPage() {
+	const dispatch = useDispatch();
+  
+	useEffect(() => {
+	  dispatch({ type: 'GET_ITEMS' });
+	}, [dispatch]);
+  
 	return (
-		<div className="container">
-			<h2>Shelf</h2>
-			<p>All of the available items can be seen here.</p>
-			<ShelfForm />
-			<ShelfList />
-		</div>
+	  <div className="container">
+		<h2>Shelf</h2>
+		<p>All of the available items can be seen here.</p>
+		<ShelfList />
+	  </div>
 	);
-}
-
-export default ShelfPage;
+  }
+  
+  export default ShelfPage;
+  
