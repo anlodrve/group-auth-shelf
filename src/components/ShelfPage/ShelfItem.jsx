@@ -1,9 +1,12 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 function ShelfItem({ id, description, imageUrl }) {
+	console.log(id);
+	const dispatch = useDispatch(); 
 
 	const handleDelete = () => {
-		dispatchEvent({
+		dispatch({
 			type: 'DELETE_ITEM',
 			payload: id
 		})
@@ -13,7 +16,7 @@ function ShelfItem({ id, description, imageUrl }) {
       <img src={imageUrl} alt={description} />
       <p>{description}</p>
 
-	  <button className="deleteButton" onClick={handleDelete()}>Delete</button>
+	  <button className="deleteButton" onClick={handleDelete}>Delete</button>
 
     </div>
   );
