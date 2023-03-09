@@ -1,16 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LogOutButton from "../LogOutButton/LogOutButton";
 import "./Nav.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 function Nav() {
+	const dispatch = useDispatch();
 	const user = useSelector((store) => store.user);
 
-	console.log(user);
 	return (
 		<div className="nav">
-			<Link className="nav__title-link" to="/home">
+			<Link className="nav__title-link" to="/shelf">
 				<h2 className="nav__title">Auth Shelf</h2>
 			</Link>
 			<div className="nav__link-box">
@@ -22,19 +21,24 @@ function Nav() {
 					</Link>
 				)}
 
+				<Link className="nav__link" to="/about">
+					About
+				</Link>
+
 				{/* If a user is logged in, show these links */}
 				{user.id && (
 					<>
 						<Link className="nav__link" to="/shelf">
 							The Shelf
 						</Link>
-						<LogOutButton className="navLink" />
+						<Link
+							className="nav__link"
+							onClick={() => dispatch({ type: "LOGOUT" })}
+						>
+							Logout
+						</Link>
 					</>
 				)}
-
-				<Link className="nav__link" to="/about">
-					About
-				</Link>
 			</div>
 		</div>
 	);

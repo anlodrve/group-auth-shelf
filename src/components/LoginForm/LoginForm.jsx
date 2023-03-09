@@ -2,12 +2,14 @@ import "./LoginForm.scss";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function LoginForm() {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const errors = useSelector((store) => store.errors);
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const login = (event) => {
 		event.preventDefault();
@@ -26,8 +28,8 @@ function LoginForm() {
 	}; // end login
 
 	return (
-		<form className="formPanel" onSubmit={login}>
-			<h2>Login</h2>
+		<form className="login-form" onSubmit={login}>
+			<h2 className="login-form__header">Login</h2>
 			{errors.loginMessage && (
 				<h3 className="alert" role="alert">
 					{errors.loginMessage}
@@ -65,6 +67,15 @@ function LoginForm() {
 					value="Log In"
 				/>
 			</div>
+			<button
+				type="button"
+				className="login-form__registration-btn"
+				onClick={() => {
+					history.push("/registration");
+				}}
+			>
+				Register
+			</button>
 		</form>
 	);
 }
