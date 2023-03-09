@@ -50,8 +50,23 @@ router.post('/', (req, res) => {
 /**
  * Delete an item if it's something the logged in user added
  */
+// payload is the item id 
 router.delete('/:id', (req, res) => {
   // endpoint functionality
+  console.log(`in delete in router`)
+
+  queryText = 
+    `DELETE FROM "item" WHERE "id" = $1`
+    
+  queryParams = [req.params.id]; 
+
+  pool.query(queryText, queryParams)
+      .then((result) => {
+        result.sendStatus(204); 
+      })
+      .catch((error) => {
+        console.log('Delete failed in server', error); 
+      })
 });
 
 /**
