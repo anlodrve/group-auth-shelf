@@ -26,14 +26,3 @@ function ShelfForm() {
 
 export default ShelfForm;
 
-function* addShelfItem(action) {
-    try {
-        yield axios.post('/api/shelf', action.payload);
-
-        yield put({ type: 'GET_ITEMS' });
-
-    } catch {
-        console.log('get all error');
-    }
-        
-}

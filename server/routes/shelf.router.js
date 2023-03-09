@@ -13,7 +13,6 @@ router.get('/', (req, res) => {
  * Add an item for the logged in user to the shelf
  */
 router.post('/', (req, res) => {
-  console.log(req.body)
 
   const query = `
   INSERT INTO "item" ("description", "image_url")
