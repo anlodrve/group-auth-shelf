@@ -11,10 +11,13 @@ function ShelfItem({ id, description, imageUrl }) {
 			payload: id
 		})
 	}
+
+
   return (
     <div>
       <img src={imageUrl} alt={description} />
       <p>{description}</p>
+
 
 	  <button className="deleteButton" onClick={handleDelete}>Delete</button>
 
