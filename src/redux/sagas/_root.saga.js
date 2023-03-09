@@ -15,5 +15,6 @@ export default function* rootSaga() {
     loginSaga(), // login saga is now registered
     registrationSaga(),
     userSaga(),
+    getItemsSaga(), //TODO: <=== invoked saga to get all items here 
   ]);
 }
