@@ -38,8 +38,8 @@ router.post('/', (req, res) => {
 
   // FIRST QUERY MAKES MOVIE
   pool.query(query, params)
-  .then(result => {
-    console.log(result)
+  .then(()=> {
+    res.sendStatus(201)
 
   }).catch(err => {
     console.log(err);
@@ -53,7 +53,8 @@ router.post('/', (req, res) => {
 // payload is the item id 
 router.delete('/:id', (req, res) => {
   // endpoint functionality
-  console.log(`in delete in router`)
+
+  console.log('in delete, req.user.id is', req.user.id);
 
   queryText = 
     `DELETE FROM "item" WHERE "id" = $1`
@@ -61,8 +62,8 @@ router.delete('/:id', (req, res) => {
   queryParams = [req.params.id]; 
 
   pool.query(queryText, queryParams)
-      .then((result) => {
-        result.sendStatus(204); 
+      .then(() => {
+        res.sendStatus(204); 
       })
       .catch((error) => {
         console.log('Delete failed in server', error); 
