@@ -20,7 +20,7 @@ import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 
-import "./App.css";
+import "./App.scss";
 
 function App() {
 	const dispatch = useDispatch();
