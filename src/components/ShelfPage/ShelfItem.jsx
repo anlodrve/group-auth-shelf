@@ -1,28 +1,33 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-function ShelfItem({ id, description, imageUrl }) {
-	console.log(id);
-	const dispatch = useDispatch(); 
+function ShelfItem({ item }) {
+	const dispatch = useDispatch();
+	const user = useSelector((store) => store.user);
+	const { id, description, imageUrl, user_id } = item;
 
-	const handleDelete = () => {
+	const handleDelete = (e) => {
+		e.preventDefault();
+
 		dispatch({
-			type: 'DELETE_ITEM',
-			payload: id
-		})
-	}
+			type: "DELETE_ITEM",
+			payload: id,
+		});
+	};
 
+	console.log(user);
+	return (
+		<div>
+			<img src={imageUrl} alt={description} />
+			<p>{description}</p>
 
-  return (
-    <div>
-      <img src={imageUrl} alt={description} />
-      <p>{description}</p>
-
-
-	  <button className="deleteButton" onClick={handleDelete}>Delete</button>
-
-    </div>
-  );
+			{user.id === user_id && (
+				<button className="deleteButton" onClick={handleDelete}>
+					Delete
+				</button>
+			)}
+		</div>
+	);
 }
 
 export default ShelfItem;
