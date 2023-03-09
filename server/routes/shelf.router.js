@@ -28,10 +28,10 @@ router.get("/", (req, res) => {
  */
 router.post("/", (req, res) => {
 	const query = `
-  INSERT INTO "item" ("description", "image_url")
-  VALUES ($1, $2)`;
+  INSERT INTO "item" ("description", "image_url", "user_id")
+  VALUES ($1, $2, $3)`;
 
-	params = [req.body.description, req.body.image_url];
+	params = [req.body.description, req.body.image_url, req.user.id];
 
 	// FIRST QUERY MAKES MOVIE
 	pool.query(query, params)
@@ -47,13 +47,12 @@ router.post("/", (req, res) => {
 /**
  * Delete an item if it's something the logged in user added
  */
-// payload is the item id 
-router.delete('/:id', rejectUnauthenticated, (req, res) => {
-  // endpoint functionality
+// payload is the item id
+router.delete("/:id", rejectUnauthenticated, (req, res) => {
+	// endpoint functionality
 
-  queryText = 
-    `DELETE FROM "item" WHERE "id" = $1 AND user_id = $2`
-  queryParams = [req.params.id, req.user.id]; 
+	queryText = `DELETE FROM "item" WHERE "id" = $1 AND user_id = $2`;
+	queryParams = [req.params.id, req.user.id];
 
 	pool.query(queryText, queryParams)
 		.then(() => {
