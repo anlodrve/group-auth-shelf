@@ -36,17 +36,14 @@ To use the digital shelf application, follow these steps:
 
 1. Log in to the application with your registered account. 
 
-1. Navigate to the Shelf page (ShelfPage.js at /shelf) to view all the items currently stored in the database. 
+1. Navigate to the Shelf page to view all the items currently stored in the database. 
 
-1. To add a new item to the shelf, click on the "Add Item" button on the Shelf page. 
-
-1. In the form that appears, enter the image URL and description of the item. 
+1. To add a new item to the digital shelf, navigate to the shelf page. A form will be present where you can enter the details of the item, including the image URL and description. 
 
 1. Click on the "Submit" button to add the new item to the shelf. The newly added item will immediately appear in the list. 
 
 1. To delete an item from the shelf, find the item in the list and click on the "Delete" button next to the item. 
 
-1. If you were the one who added the item to the shelf, the item will be deleted from the database and the list will be updated.
 
 ---
 
