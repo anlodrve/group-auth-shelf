@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import "./InfoPage.scss";
 
 // This is one of our simplest components
 // It doesn't have local state
@@ -6,11 +7,11 @@ import React from 'react';
 // or even care what the redux state is
 
 function InfoPage() {
-  return (
-    <div className="container">
-      <p>Info Page</p>
-    </div>
-  );
+	return (
+		<div className="container">
+			<p>Info Page</p>
+		</div>
+	);
 }
 
 export default InfoPage;
