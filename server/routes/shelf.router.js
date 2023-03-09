@@ -23,10 +23,10 @@ router.post('/', (req, res) => {
 router.delete('/:id', (req, res) => {
   // endpoint functionality
   console.log(`in delete in router`)
-  
-  queryText = `
-    DELETE FROM "item" WHERE "id" = $1
-  `
+
+  queryText = 
+    `DELETE FROM "item" WHERE "id" = $1`
+    
   queryParams = [req.params.id]; 
 
   pool.query(queryText, queryParams)
