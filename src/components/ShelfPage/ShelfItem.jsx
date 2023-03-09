@@ -1,5 +1,6 @@
-function ShelfItem() {
+import React from 'react';
 
+function ShelfItem({ id, description, imageUrl }) {
 
 	const handleDelete = () => {
 		dispatchEvent({
@@ -7,18 +8,15 @@ function ShelfItem() {
 			payload: id
 		})
 	}
+  return (
+    <div>
+      <img src={imageUrl} alt={description} />
+      <p>{description}</p>
 
+	  <button className="deleteButton" onClick={handleDelete()}>Delete</button>
 
-	
-
-
-
-	return ( 
-	<>
-		<h1>Shelf Item</h1>
-			<button className="deleteButton" onClick={handleDelete()}>Delete</button>
-	</>
-	)
+    </div>
+  );
 }
 
 export default ShelfItem;
