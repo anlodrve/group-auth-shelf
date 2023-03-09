@@ -9,9 +9,8 @@ const itemsReducer = (state = [], action) => {
   
   export default itemsReducer;
 
-  //TODO: add itemsReducer 
 
   //! Comments:
   // if the type is 'SET_ITEMS' the function replaces the existing state 
   // with the payload attribute of the action object
-  // if the type does not match any cases - the function returns the current state
+  // If the type does not match any cases, the function returns the current state
