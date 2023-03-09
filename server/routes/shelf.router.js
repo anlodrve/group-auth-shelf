@@ -13,7 +13,22 @@ router.get('/', (req, res) => {
  * Add an item for the logged in user to the shelf
  */
 router.post('/', (req, res) => {
-  // endpoint functionality
+
+  const query = `
+  INSERT INTO "item" ("description", "image_url")
+  VALUES ($1, $2)`;
+
+  params = [req.body.description, req.body.image_url]
+
+  // FIRST QUERY MAKES MOVIE
+  pool.query(query, params)
+  .then(result => {
+    console.log(result)
+
+  }).catch(err => {
+    console.log(err);
+    res.sendStatus(500)
+  })
 });
 
 /**

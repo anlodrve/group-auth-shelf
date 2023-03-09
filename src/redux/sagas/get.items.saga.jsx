@@ -1,5 +1,5 @@
 import axios from "axios";
-import { put, takeLatest } from "redux-saga/effects";
+import { put, takeEvery } from "redux-saga/effects";
 
 // worker Saga: invoked when 'GET_ITEMS' dispatches
 function* getItems() {
@@ -13,13 +13,26 @@ function* getItems() {
   }
 }
 
-// watcher* Saga:  will watch for 'GET_ITEMS' action
-function* getItemsSaga() {
-  console.log("getItemsSaga");
-  yield takeLatest("GET_ITEMS", getItems);
+function* addShelfItem(action) {
+  try {
+      yield axios.post('/api/shelf', action.payload);
+
+      yield put({ type: 'GET_ITEMS' });
+
+  } catch (error) {
+
+      console.log('get all error', error);
+  }
+      
 }
 
-export default getItemsSaga;
+// watcher* Saga:  will watch for 'GET_ITEMS' action
+function* watcherSaga() {
+  yield takeEvery("GET_ITEMS", getItems);
+  yield takeEvery("ADD_ITEM", addShelfItem)
+}
+
+export default watcherSaga;
 
 //! COMMENTS:
 // takeLatest creates a forked task that cancels the previous task 
